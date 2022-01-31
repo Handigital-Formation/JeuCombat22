@@ -1,11 +1,23 @@
 <?php
 require "Personnage.php";
 
-$flo = new Personnage;
-$pierre = new Personnage;
+// $flo = new Personnage;
+// $flo->setId(1);
+// $flo->setNom("Flo");
+$donnees_flo = array(
+    'id' => 1,
+    'nom' => "Flo",
+    'degats' => 25
+);
 
-$flo->setId(1); $flo->setNom("Flo");
-$pierre->setId(2); $pierre->setNom("Pierre");
+$flo = new Personnage($donnees_flo);
+
+$donnees_pierre = array(
+    'id' => 2,
+    'nom' => "Pierre",
+    'degats' => 25
+);
+$pierre = new Personnage($donnees_pierre);
 
 echo $flo->info();
 echo $pierre->info();

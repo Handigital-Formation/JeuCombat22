@@ -9,6 +9,26 @@ class Personnage
     const PERSONNAGE_TUE = 2; // Constante renvoyée par la méthode `frapper` si on a tué le personnage en le frappant.
     const PERSONNAGE_FRAPPE = 3; // Constante renvoyée par la méthode `frapper` si on a bien frappé le personnage.
     
+    public function __construct($donnees)
+    {
+        $this->hydrate($donnees);
+    }
+        
+    public function hydrate($donnees)
+    {
+        // $this->setId($donnees['id']);
+        // $this->setNom($donnees['nom']);
+        // $this->setDegats($donnees['degats']);
+
+        foreach ($donnees as $key => $value) {
+            $method = 'set' . ucfirst($key); // exemple setId
+            if (method_exists($this, $method)) //regarde si le setter existe
+            {
+                $this->$method($value); //si oui, appelle le setter, par exemple $this->setId($donnees[‘id’])
+            }
+        }
+    }
+    
     public function degats()
     {
         return $this->_degats;
